@@ -3,32 +3,45 @@
 {% block title %}Entretien{% endblock %}
 
 {% block body %}
-    <h1>Entretien</h1>
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-gray-900 text-center mb-10">Entretien Details</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entretien.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ entretien.date ? entretien.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Typeentretien</th>
-                <td>{{ entretien.typeentretien }}</td>
-            </tr>
-            <tr>
-                <th>Remarque</th>
-                <td>{{ entretien.remarque }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <table class="w-full border-collapse border border-gray-200">
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-900 bg-gray-50">Id</th>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ entretien.id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-900 bg-gray-50">Date</th>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ entretien.date ? entretien.date|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-900 bg-gray-50">Type Entretien</th>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ entretien.typeentretien }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-900 bg-gray-50">Remarque</th>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ entretien.remarque }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <a href="{{ path('app_entretien_index') }}">back to list</a>
+        <div class="mt-8 text-center">
+            <a href="{{ path('app_entretien_index') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mr-4">
+                Back to List
+            </a>
+            <a href="{{ path('app_entretien_edit', {'id': entretien.id}) }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Edit
+            </a>
+        </div>
 
-    <a href="{{ path('app_entretien_edit', {'id': entretien.id}) }}">edit</a>
-
-    {{ include('entretien/_delete_form.html.twig') }}
+        <div class="mt-4 text-center">
+            {{ include('entretien/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
 {% endblock %}

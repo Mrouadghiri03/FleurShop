@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Marouan/Desktop/symfony/youbi/YoubiProject/src/Controller/MainController.php</code></li>
-        <li>Your template at <code>C:/Users/Marouan/Desktop/symfony/youbi/YoubiProject/templates/main/index.html.twig</code></li>
-    </ul>
+<div class="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div class="max-w-4xl w-full">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">Home</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <a href="{{ path('app_utilisateur_index') }}" class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold py-8 rounded-lg shadow-md transform transition-transform hover:scale-105">
+                <span>Utilisateur</span>
+            </a>
+            <a href="{{ path('app_fleur_index') }}" class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold py-8 rounded-lg shadow-md transform transition-transform hover:scale-105">
+                <span>Fleur</span>
+            </a>
+            <a href="{{ path('app_entretien_index') }}" class="flex items-center justify-center bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold py-8 rounded-lg shadow-md transform transition-transform hover:scale-105">
+                <span>Entretien</span>
+            </a>
+            <a href="{{ path('app_commande_index') }}" class="flex items-center justify-center bg-gradient-to-r from-red-500 to-red-700 text-white font-semibold py-8 rounded-lg shadow-md transform transition-transform hover:scale-105">
+                <span>Commande</span>
+            </a>
+        </div>
+    </div>
 </div>
 {% endblock %}

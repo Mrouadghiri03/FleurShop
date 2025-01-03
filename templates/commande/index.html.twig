@@ -1,37 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande index{% endblock %}
+{% block title %}Commande Index{% endblock %}
 
 {% block body %}
-    <h1>Commande index</h1>
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-gray-900 text-center mb-10">Commande Collection</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Datecommande</th>
-                <th>Total</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for commande in commandes %}
-            <tr>
-                <td>{{ commande.id }}</td>
-                <td>{{ commande.datecommande ? commande.datecommande|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ commande.total }}</td>
-                <td>
-                    <a href="{{ path('app_commande_show', {'id': commande.id}) }}">show</a>
-                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date Commande</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Total</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    {% for commande in commandes %}
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ commande.id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ commande.datecommande ? commande.datecommande|date('Y-m-d H:i:s') : '' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ commande.total }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="{{ path('app_commande_show', {'id': commande.id}) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Show</a>
+                                <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="text-pink-600 hover:text-pink-900">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <a href="{{ path('app_commande_new') }}">Create new</a>
+        <div class="mt-8 text-center">
+            <a href="{{ path('app_commande_new') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                Create New Commande
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -3,36 +3,49 @@
 {% block title %}Utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Utilisateur</h1>
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-gray-900 text-center mb-10">Utilisateur Details</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ utilisateur.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ utilisateur.nom }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ utilisateur.email }}</td>
-            </tr>
-            <tr>
-                <th>Telephne</th>
-                <td>{{ utilisateur.telephne }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ utilisateur.role }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Id</th>
+                        <td class="px-6 py-4 text-sm text-gray-900">{{ utilisateur.id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Nom</th>
+                        <td class="px-6 py-4 text-sm text-gray-900">{{ utilisateur.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Email</th>
+                        <td class="px-6 py-4 text-sm text-gray-900">{{ utilisateur.email }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Téléphone</th>
+                        <td class="px-6 py-4 text-sm text-gray-900">{{ utilisateur.telephne }}</td>
+                    </tr>
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Role</th>
+                        <td class="px-6 py-4 text-sm text-gray-900">{{ utilisateur.role }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <a href="{{ path('app_utilisateur_index') }}">back to list</a>
-
-    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
-
-    {{ include('utilisateur/_delete_form.html.twig') }}
+        <div class="mt-8 flex justify-center space-x-4">
+            <a href="{{ path('app_utilisateur_index') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                Back to List
+            </a>
+            <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Edit
+            </a>
+            {{ include('utilisateur/_delete_form.html.twig', {
+                button_label: 'Delete',
+                button_classes: 'inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+            }) }}
+        </div>
+    </div>
+</div>
 {% endblock %}
