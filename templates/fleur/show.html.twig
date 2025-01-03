@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fleur{% endblock %}
+
+{% block body %}
+    <h1>Fleur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fleur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomscentifique</th>
+                <td>{{ fleur.nomscentifique }}</td>
+            </tr>
+            <tr>
+                <th>Nomcommun</th>
+                <td>{{ fleur.nomcommun }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ fleur.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Descrpition</th>
+                <td>{{ fleur.descrpition }}</td>
+            </tr>
+            <tr>
+                <th>Quantitestock</th>
+                <td>{{ fleur.quantitestock }}</td>
+            </tr>
+            <tr>
+                <th>Prixunitaire</th>
+                <td>{{ fleur.prixunitaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fleur_index') }}">back to list</a>
+
+    <a href="{{ path('app_fleur_edit', {'id': fleur.id}) }}">edit</a>
+
+    {{ include('fleur/_delete_form.html.twig') }}
+{% endblock %}

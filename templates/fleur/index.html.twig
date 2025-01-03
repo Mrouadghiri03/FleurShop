@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fleur Index{% endblock %}
+
+{% block body %}
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-gray-900 text-center mb-10">Fleur Collection</h1>
+
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Scientific Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Common Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Color</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Stock</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    {% for fleur in fleurs %}
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ fleur.id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ fleur.nomscentifique }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ fleur.nomcommun }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-{{ fleur.couleur|lower }}-100 text-{{ fleur.couleur|lower }}-800">
+                                    {{ fleur.couleur }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{{ fleur.descrpition }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ fleur.quantitestock }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{{ fleur.prixunitaire|number_format(2, '.', ',') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="{{ path('app_fleur_show', {'id': fleur.id}) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">View</a>
+                                <a href="{{ path('app_fleur_edit', {'id': fleur.id}) }}" class="text-pink-600 hover:text-pink-900">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="{{ path('app_fleur_new') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                Create New Fleur
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
